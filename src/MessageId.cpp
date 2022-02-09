@@ -40,6 +40,16 @@ Php::Value MessageId::serialize(Php::Parameters &params)
     return result;
 }
 
+Php::Value MessageId::earliest(Php::Parameters &params)
+{
+    return ::earliest();
+}
+
+Php::Value MessageId::latest(Php::Parameters &params)
+{
+    return ::latest();
+}
+
 void registerMessageId(Php::Namespace &pulsarNamespace)
 {
     Php::Class<MessageId> messageId("MessageId");

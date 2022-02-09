@@ -1,4 +1,5 @@
 #include "Client.h"
+#include "ClientConfiguration.h"
 #include "Consumer.h"
 #include "ConsumerConfiguration.h"
 #include "Message.h"
@@ -8,7 +9,7 @@
 
 extern "C" {
 PHPCPP_EXPORT void *get_module() {
-    static Php::Extension extension("pulsar-phpcpp", "0.1");
+    static Php::Extension extension("pulsar-phpcpp", "1.0");
 
     Php::Namespace pulsarNamespace("Pulsar");
 
@@ -17,6 +18,7 @@ PHPCPP_EXPORT void *get_module() {
     registerProducer(pulsarNamespace);
     registerConsumer(pulsarNamespace);
     registerClient(pulsarNamespace);
+    registerClientConfiguration(pulsarNamespace);
     registerConsumerConfiguration(pulsarNamespace);
 
     extension.add(pulsarNamespace);
