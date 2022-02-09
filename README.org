@@ -15,6 +15,24 @@ git clone git@github.com:oraoto/pulsar-client-phpcpp.git
 make -j4
 #+end_src
 
+or use a Docker
+
+#+begin_src
+docker build --rm -t pulsar-client-php:7.4 .
+#+end_src
+
+the library is here:
+
+#+begin_src
+docker run --rm pulsar-client-php:7.4 ls -al /tmp/pulsar-client-phpcpp/pulsar-phpcpp.so
+#+end_src
+
+the debian package is here:
+
+#+begin_src
+docker run --rm pulsar-client-php:7.4 ls -al /tmp/pulsar-client-phpcpp/php74-pulsar-client.deb
+#+end_src
+
 ** Usage
 
 See [[./examples][examples]] for more examples.
