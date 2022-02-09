@@ -1,9 +1,12 @@
 <?php
 
 use Pulsar\Client;
+use Pulsar\ClientConfiguration;
 use Pulsar\MessageBuilder;
 
-$client = new Client("pulsar://10.217.0.224:6650");
+$config = new ClientConfiguration();
+//$config->setFileLogger('/tmp/examples/client.log', ClientConfiguration::LOGGER_LEVEL_INFO);
+$client = new Client("pulsar://172.17.0.1:6650", $config);
 
 $producer = $client->createProducer("persistent://prop/r1/ns1/test-topic");
 
