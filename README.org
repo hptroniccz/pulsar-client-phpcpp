@@ -6,6 +6,9 @@ Requirements:
 
 - [[https://github.com/apache/pulsar/tree/master/pulsar-client-cpp/][Pulsar C++ client library]]
 - [[https://github.com/CopernicaMarketingSoftware/PHP-CPP][PHP-CPP]]
+- [[https://github.com/NobletSolutions/PHP-CPP][PHP-CPP 8.0]]
+- PHP 7.4
+- PHP 8.0
 - PHP 8.1
 
 Compilation:
@@ -15,16 +18,18 @@ git clone git@github.com:oraoto/pulsar-client-phpcpp.git
 make -j4
 #+end_src
 
-or use a Docker
+use a Docker:
 
 #+begin_src
-docker build --rm -t pulsar-client-php:8.0 .
+docker build --rm -t pulsar-client-php:7.4 -f ./Dockerfile-74 .
+docker build --rm -t pulsar-client-php:8.0 -f ./Dockerfile-80 .
 docker build --rm -t pulsar-client-php:8.1 -f ./Dockerfile-81 .
 #+end_src
 
 the library is here:
 
 #+begin_src
+docker run --rm pulsar-client-php:7.4 ls -al /tmp/pulsar-client-phpcpp/pulsar-phpcpp.so
 docker run --rm pulsar-client-php:8.0 ls -al /tmp/pulsar-client-phpcpp/pulsar-phpcpp.so
 docker run --rm pulsar-client-php:8.1 ls -al /tmp/pulsar-client-phpcpp/pulsar-phpcpp.so
 #+end_src
@@ -32,8 +37,17 @@ docker run --rm pulsar-client-php:8.1 ls -al /tmp/pulsar-client-phpcpp/pulsar-ph
 the debian package is here:
 
 #+begin_src
+docker run --rm pulsar-client-php:7.4 ls -al /tmp/pulsar-client-phpcpp/php74-pulsar-client.deb
 docker run --rm pulsar-client-php:8.0 ls -al /tmp/pulsar-client-phpcpp/php80-pulsar-client.deb
 docker run --rm pulsar-client-php:8.1 ls -al /tmp/pulsar-client-phpcpp/php81-pulsar-client.deb
+#+end_src
+
+getting a package from an image e.g.:
+
+#+begin_src
+docker run --name pulsar-client-php pulsar-client-php:8.1 /bin/true
+docker cp pulsar-client-php:/tmp/pulsar-client-phpcpp/php81-pulsar-client.deb php81-pulsar-client.deb
+docker rm pulsar-client-php
 #+end_src
 
 ** Usage
